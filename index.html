@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday Alifa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Poppins:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#c2185b;--pink:#ff7eb3;--blush:#ffe3ef;--plum:#4a1236;--gold:#f5b942;--cream:#fff8fb}
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--cream);color:var(--plum);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:center;gap:4px;padding:10px;background:rgba(255,248,251,.85);backdrop-filter:blur(8px);border-bottom:1px solid #f6cfe0}
+nav a{color:var(--plum);text-decoration:none;font-size:.85rem;font-weight:500;padding:6px 14px;border-radius:99px;transition:.2s}
+nav a:hover,nav a.on{background:var(--rose);color:#fff}
+section{min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:84px 22px 70px;position:relative}
+section.active{display:flex;animation:pin .6s ease}
+@keyframes pin{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.next:disabled{background:#cdb6c3;box-shadow:none;cursor:not-allowed;transform:none}
+button.next{border:0;font-family:inherit;font-size:1rem;cursor:pointer}
+.hint{font-size:.85rem;opacity:.7;margin-top:10px}
+.veil{filter:blur(7px);cursor:pointer;user-select:none}
+.env{font-size:6rem;cursor:pointer;animation:float 2.5s ease-in-out infinite}
+.hide{display:none!important}
+nav a.lock{opacity:.35;pointer-events:none}
+#foot{position:fixed;bottom:0;left:0;right:0;z-index:60;text-align:center;font-size:.8rem;padding:8px;background:rgba(255,248,251,.9);border-top:1px solid #f6cfe0}
+#foot a{color:var(--rose);font-weight:600;text-decoration:none}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,6vw,3rem);margin-bottom:8px}
+.sub{opacity:.75;margin-bottom:26px}
+.next{display:inline-block;margin-top:30px;padding:12px 26px;border-radius:99px;background:linear-gradient(135deg,var(--rose),var(--pink));color:#fff;text-decoration:none;font-weight:600;box-shadow:0 8px 22px rgba(194,24,91,.3);transition:.2s}
+.next:hover{transform:translateY(-3px) scale(1.04)}
+
+/* HERO */
+#home{background:radial-gradient(circle at 20% 15%,#ffd3e6 0,transparent 45%),radial-gradient(circle at 85% 80%,#e5d4ff 0,transparent 45%),var(--cream);overflow:hidden}
+.stack{display:flex;gap:clamp(8px,3vw,22px);margin-bottom:14px}
+.stack div{display:flex;flex-direction:column;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(.9rem,3.4vw,1.5rem);line-height:1.1;color:var(--rose);opacity:0;animation:drop .6s forwards}
+.stack div:nth-child(5){margin-left:10px}
+@keyframes drop{from{transform:translateY(-24px);opacity:0}to{transform:none;opacity:1}}
+.tag{background:var(--blush);color:var(--rose);padding:6px 16px;border-radius:99px;font-size:.85rem;font-weight:600;margin-bottom:18px}
+.hero-pic{width:min(260px,64vw);aspect-ratio:1;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 0 0 4px var(--pink),0 18px 40px rgba(194,24,91,.3);margin-bottom:20px;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+#home h1{font-family:'Playfair Display',serif;font-size:clamp(2.3rem,9vw,4.2rem);line-height:1.05}
+#home h1 span{color:var(--rose)}
+.hand{font-family:'Caveat',cursive;font-size:1.9rem;color:var(--rose);margin:6px 0 10px}
+.msg{max-width:440px;opacity:.85}
+.bg-emoji{position:absolute;font-size:1.6rem;opacity:.5;animation:float 5s ease-in-out infinite;pointer-events:none}
+
+/* REASONS */
+#reasons{background:linear-gradient(180deg,var(--cream),var(--blush))}
+.reasons{display:grid;gap:14px;max-width:460px;width:100%}
+.reasons p{background:#fff;border-radius:18px;padding:16px 20px;text-align:left;box-shadow:0 6px 18px rgba(194,24,91,.1);opacity:0;transform:translateX(-30px);transition:.6s}
+.reasons.show p{opacity:1;transform:none}
+.reasons.show p:nth-child(2){transition-delay:.15s}.reasons.show p:nth-child(3){transition-delay:.3s}.reasons.show p:nth-child(4){transition-delay:.45s}
+
+/* WISH */
+#wish{background:var(--blush)}
+.letter{max-width:460px;background:#fffdf8;border-radius:6px;padding:34px 28px;text-align:left;box-shadow:0 14px 34px rgba(74,18,54,.18);transform:rotate(-1.2deg);background-image:repeating-linear-gradient(transparent,transparent 31px,#f3d9e4 32px);line-height:32px}
+.letter .to{font-family:'Caveat',cursive;font-size:2rem;line-height:40px;color:var(--rose)}
+.letter .sig{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--rose);text-align:right}
+
+/* PHOTOS */
+#photos{background:linear-gradient(180deg,var(--blush),#efe2ff)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:640px;width:100%}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr);max-width:1000px}}
+.card{perspective:1000px;aspect-ratio:3/4;cursor:pointer}
+.inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.card.flip .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;box-shadow:0 10px 26px rgba(74,18,54,.25)}
+.front{border:5px solid #fff;background:#fff}
+.front img{width:100%;height:100%;object-fit:cover;display:block}
+.front i{position:absolute;bottom:8px;right:8px;font-style:normal;font-size:.7rem;background:rgba(255,255,255,.9);color:var(--rose);padding:3px 9px;border-radius:99px;font-weight:600}
+.back{transform:rotateY(180deg);background:#fffdf8 repeating-linear-gradient(transparent,transparent 27px,#f3d9e4 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;border:5px solid #fff}
+.back b{font-size:1.6rem;margin-bottom:6px}
+.back p{font-family:'Caveat',cursive;font-size:1.3rem;line-height:1.25;color:var(--plum)}
+.back small{margin-top:10px;color:var(--rose);font-weight:600}
+
+/* CAKE */
+#cake{background:radial-gradient(circle at 50% 30%,#ffe9a8 0,transparent 45%),linear-gradient(180deg,#efe2ff,#2b0f3a);color:#fff}
+#cake .sub{color:#fff}
+.cake{position:relative;width:220px;height:200px;margin:46px auto 14px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cake .t3{position:absolute;bottom:0;left:0;width:220px;height:70px;background:#f48fb1;border-radius:14px}
+.cake .t2{position:absolute;bottom:70px;left:25px;width:170px;height:60px;background:#ffcdd2;border-radius:14px}
+.cake .t1{position:absolute;bottom:130px;left:55px;width:110px;height:46px;background:#fff;border-radius:14px}
+.cake .drip{position:absolute;bottom:162px;left:55px;width:110px;height:14px;background:var(--rose);border-radius:14px 14px 0 0}
+.candle{position:absolute;bottom:176px;left:104px;width:12px;height:46px;background:repeating-linear-gradient(45deg,#fff 0 6px,var(--pink) 6px 12px);border-radius:3px}
+.flame{position:absolute;bottom:222px;left:103px;width:14px;height:26px;background:radial-gradient(circle at 50% 70%,#fff3a0,var(--gold) 55%,#ff6f3c);border-radius:50% 50% 50% 50%/65% 65% 35% 35%;animation:flick .3s infinite alternate;box-shadow:0 0 22px 8px rgba(255,200,80,.7);transition:.4s}
+.out .flame{opacity:0;transform:scale(0)}
+@keyframes flick{to{transform:scale(1.1,.94) rotate(3deg)}}
+.smoke{position:absolute;bottom:222px;left:107px;width:6px;height:30px;background:linear-gradient(#ffffff99,transparent);border-radius:6px;opacity:0}
+.out .smoke{animation:smoke 2s forwards}
+@keyframes smoke{0%{opacity:.9;transform:translateY(0)}100%{opacity:0;transform:translateY(-40px)}}
+#status{font-size:1.1rem;font-weight:600;min-height:1.6em}
+#again{display:none;margin-top:18px;background:none;border:1px solid #fff;color:#fff;padding:8px 18px;border-radius:99px;cursor:pointer;font-family:inherit}
+.final{display:none;font-family:'Playfair Display',serif;font-size:1.6rem;margin-top:14px}
+.out .final{display:block}
+canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:100}
+
+</style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="on">Home</a><a href="#reasons" class="lock">Reasons</a><a href="#wish" class="lock">Wish</a><a href="#photos" class="lock">Photos</a><a href="#cake" class="lock">Cake</a>
+</nav>
+
+<section id="home">
+  <span class="bg-emoji" style="top:14%;left:8%">🎈</span><span class="bg-emoji" style="top:22%;right:9%;animation-delay:1s">✨</span><span class="bg-emoji" style="bottom:12%;left:12%;animation-delay:2s">🎀</span><span class="bg-emoji" style="bottom:18%;right:10%;animation-delay:.5s">🎈</span>
+  <div class="stack" aria-label="HAPPY BDAY">
+    <div style="animation-delay:.0s">H<br>A<br>P<br>P<br>Y</div>
+    <div style="animation-delay:.2s">B<br>D<br>A<br>Y</div>
+  </div>
+  <div class="tag">🎉 November 19 · Birthday Time</div>
+  <img class="hero-pic" src="img/p1.jpg" alt="Alifa wearing a little crown">
+  <h1>Happy <span>Birthday!</span></h1>
+  <div class="hand">It's Alifa's day 👑</div>
+  <p class="msg">Wishing you a year full of bright smiles, joyful days and everything your heart hopes for. Today the whole spotlight is yours!</p>
+  <button class="next" data-next>Next Surprise 🎁</button>
+</section>
+
+<section id="reasons">
+  <h2>Why You're So Loved</h2>
+  <p class="sub">Tap each blurred card to reveal it 💗 (<span id="rc">0</span>/4)</p>
+  <div class="reasons" id="rs">
+    <p class="veil">😊 Your smile can brighten up any day.</p>
+    <p class="veil">💖 You have a kind and caring heart.</p>
+    <p class="veil">⚡ Your energy makes everything more fun.</p>
+    <p class="veil">🤝 You always support the people around you.</p>
+  </div>
+  <button class="next" data-next disabled>Reveal all 4 to unlock 🔒</button>
+</section>
+
+<section id="wish">
+  <h2>Birthday Note</h2>
+  <p class="sub">Tap the envelope to open it 💌</p>
+  <div class="env" id="env">💌</div>
+  <div class="letter hide" id="letter">
+    <div class="to">Dear Alifa,</div>
+    Happy Birthday! May this new year bring you good health, lots of success and endless joy. Keep smiling, keep shining and keep being you.
+    <div class="sig">— Best Wishes</div>
+  </div>
+  <button class="next" data-next disabled>Open the letter to unlock 🔒</button>
+</section>
+
+<section id="photos">
+  <h2>Picture Perfect</h2>
+  <p class="sub">Flip all 4 photos and read each note 📸 (<span id="fc">0</span>/4)</p>
+  <div class="grid">
+    <div class="card"><div class="inner">
+      <div class="face front"><img src="img/p2.jpg" alt="Alifa in a red hijab"><i>tap to flip</i></div>
+      <div class="face back"><b>💋</b><p>That red-on-red look? Absolutely stunning. Alifa, you were born to shine.</p><small>Note #1</small></div>
+    </div></div>
+    <div class="card"><div class="inner">
+      <div class="face front"><img src="img/p3.jpg" alt="Alifa in a black hijab"><i>tap to flip</i></div>
+      <div class="face back"><b>😊</b><p>This soft, sweet smile makes everyone around you feel at home.</p><small>Note #2</small></div>
+    </div></div>
+    <div class="card"><div class="inner">
+      <div class="face front"><img src="img/p4.jpg" alt="Alifa posing in a blue hijab"><i>tap to flip</i></div>
+      <div class="face back"><b>💙</b><p>Fun, playful and full of style. Never lose that sparkle!</p><small>Note #3</small></div>
+    </div></div>
+    <div class="card"><div class="inner">
+      <div class="face front"><img src="img/p5.jpg" alt="Alifa smiling in a blue hijab"><i>tap to flip</i></div>
+      <div class="face back"><b>🌸</b><p>May every day of your new year be as bright as this smile. Happy Birthday!</p><small>Note #4</small></div>
+    </div></div>
+  </div>
+  <button class="next" data-next disabled>Flip all 4 to unlock 🔒</button>
+</section>
+
+<section id="cake">
+  <h2>Blow the Candle!</h2>
+  <p class="sub">Tap the cake, close your eyes and make a wish 🎂</p>
+  <div class="cake-wrap" id="cw">
+    <div class="cake" id="cakeEl" role="button" aria-label="Blow out the candle">
+      <div class="flame"></div><div class="smoke"></div><div class="candle"></div>
+      <div class="drip"></div><div class="t1"></div><div class="t2"></div><div class="t3"></div>
+    </div>
+    <div id="status">🕯️ still lit...</div>
+    <div class="final">Happy Birthday, Alifa! 🎉💖</div>
+    <button id="again">Light it again</button>
+  </div>
+  
+</section>
+
+<div id="foot">Design by <a href="https://www.theanayet.top" target="_blank" rel="noopener">The-Anayet</a></div>
+<canvas id="conf"></canvas>
+
+<script>
+const pages=[...document.querySelectorAll('section')],links=[...document.querySelectorAll('nav a')];
+let cur=0,maxp=0;
+function show(i){cur=i;pages.forEach((p,k)=>p.classList.toggle('active',k===i));
+  links.forEach((l,k)=>{l.classList.toggle('on',k===i);l.classList.toggle('lock',k>maxp)});scrollTo(0,0)}
+function unlock(i){const b=pages[i].querySelector('[data-next]');b.disabled=false;b.textContent='Next Surprise 🎁';if(maxp<i+1){maxp=i+1;show(cur)}}
+document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{if(cur+1>maxp)maxp=cur+1;show(cur+1)}));
+links.forEach((l,k)=>l.addEventListener('click',e=>{e.preventDefault();if(k<=maxp)show(k)}));
+maxp=0;links.forEach((l,k)=>l.classList.toggle('lock',k>maxp));
+// task 1: reveal reasons
+let rc=0;document.querySelectorAll('.veil').forEach(p=>p.addEventListener('click',()=>{if(!p.classList.contains('veil'))return;p.classList.remove('veil');p.style.cursor='default';document.getElementById('rc').textContent=++rc;if(rc===4)unlock(1)}));
+// task 2: open letter
+document.getElementById('env').addEventListener('click',e=>{e.target.classList.add('hide');document.getElementById('letter').classList.remove('hide');pages[2].querySelector('.sub').textContent='A little note for you 💌';unlock(2)});
+// task 3: flip all photos
+let flipped=new Set();document.querySelectorAll('.card').forEach((c,i)=>c.addEventListener('click',()=>{c.classList.toggle('flip');flipped.add(i);document.getElementById('fc').textContent=flipped.size;if(flipped.size===4)unlock(3)}));
+// reasons animation
+document.getElementById('rs').classList.add('show');
+show(0);
+// cake + confetti
+const cw=document.getElementById('cw'),st=document.getElementById('status'),again=document.getElementById('again');
+const cv=document.getElementById('conf'),cx=cv.getContext('2d');let ps=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function burst(){
+  const cols=['#ff7eb3','#c2185b','#f5b942','#b388ff','#fff','#7ad7f0'];
+  for(let i=0;i<160;i++)ps.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*14,vy:-Math.random()*14-3,s:Math.random()*7+4,c:cols[i%cols.length],r:Math.random()*6,l:140});
+  if(!run){run=true;tick()}
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  ps=ps.filter(p=>p.l>0);
+  ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.3;p.r+=.2;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore()});
+  if(ps.length)requestAnimationFrame(tick);else{run=false;cx.clearRect(0,0,cv.width,cv.height)}
+}
+document.getElementById('cakeEl').addEventListener('click',()=>{
+  if(cw.classList.contains('out'))return;
+  cw.classList.add('out');st.textContent='🎉 Wish made! Happy Birthday Alifa!';again.style.display='inline-block';burst();
+});
+again.addEventListener('click',()=>{cw.classList.remove('out');st.textContent='🕯️ still lit...';again.style.display='none'});
+</script>
+</body>
+</html>
